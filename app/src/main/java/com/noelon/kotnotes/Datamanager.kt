@@ -1,23 +1,35 @@
 package com.noelon.kotnotes
 
-class Datamanager {
+object Datamanager {
     val courses = HashMap<String, CourseInfo>()
     val notes = ArrayList<NoteInfo>()
 
 
-
     init {
         initializecourses()
+        initializenotes()
     }
 
-    private fun initializecourses(){
+    private fun initializecourses() {
         var course = CourseInfo("Android_Intents", "Android programming with intents")
         courses.set(course.coursename, course)
 
-        course = CourseInfo(coursename = "android_async", coursetitle = "Android Async programming and services")
+        course = CourseInfo(
+            coursename = "android_async",
+            coursetitle = "Android Async programming and services"
+        )
         courses.set(course.coursename, course)
 
         course = CourseInfo(coursetitle = "Java Fundamnetals", coursename = "java_funds")
         courses.set(course.coursename, course)
+    }
+
+    private fun initializenotes() {
+        val noteInfo = NoteInfo(
+            CourseInfo("My name", "Noel"),
+            "This is a sample note",
+            "Hey There i told you that this s a sample note"
+        )
+        notes.add(noteInfo)
     }
 }
