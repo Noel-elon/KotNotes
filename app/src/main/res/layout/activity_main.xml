@@ -6,27 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/displayValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <Spinner
+        android:id="@+id/spinnerCourses"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/noteTitleET"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayValue"
-        app:layout_constraintVertical_bias="0.84000003"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Note title"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCourses" />
+
+    <EditText
+        android:id="@+id/noteBodyET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Note text"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
+        app:layout_constraintTop_toBottomOf="@+id/noteTitleET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
