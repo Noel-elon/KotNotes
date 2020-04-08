@@ -24,12 +24,17 @@ class NoteListActivity : AppCompatActivity() {
         noteList.adapter =
             ArrayAdapter<NoteInfo>(this, android.R.layout.simple_list_item_1, Datamanager.notes)
 
-        noteList.setOnItemClickListener{parent, view, position, id ->
+        noteList.setOnItemClickListener { parent, view, position, id ->
             val intent2 = Intent(this, MainActivity::class.java)
             intent2.putExtra(extranoteposition, position)
             startActivity(intent2)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (noteList.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
     }
 
 }

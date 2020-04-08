@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         notePosition = intent.getIntExtra(extranoteposition, positionnotset)
         if (notePosition != positionnotset)
             displayNotes()
+        else {
+            Datamanager.notes.add(NoteInfo())
+            notePosition = Datamanager.notes.lastIndex
+        }
+
+
     }
 
     private fun displayNotes() {
@@ -47,11 +53,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_next -> {
-                when (item.icon) {
-                    getDrawable(R.drawable.ic_arrow_back_white_24dp) -> moveBack()
+            moveNext()
 
-                }
-                moveNext()
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -59,11 +63,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun moveBack() {
-        --notePosition
-        displayNotes()
-        invalidateOptionsMenu()
+//    private fun moveBack() {
+//        --notePosition
+//        displayNotes()
+//        invalidateOptionsMenu()
+//
+//    }
 
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = Datamanager.notes[notePosition]
+        note.noteTitle = noteTitleET.text.toString()
+        note.noteText = noteBodyET.text.toString()
+        note.courseInfo = spinnerCourses.selectedItem as CourseInfo
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -72,6 +88,8 @@ class MainActivity : AppCompatActivity() {
             val menuItem = menu?.findItem(R.id.action_next)
             if (menuItem != null) {
                 menuItem.icon = getDrawable(R.drawable.ic_arrow_back_white_24dp)
+                menuItem.isEnabled = false
+
             }
 
         }

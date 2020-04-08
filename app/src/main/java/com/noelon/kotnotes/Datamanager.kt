@@ -20,16 +20,19 @@ object Datamanager {
         )
         courses.set(course.coursename, course)
 
-        course = CourseInfo(coursetitle = "Java Fundamnetals", coursename = "java_funds")
+        course = CourseInfo(coursetitle = "Java Fundamentals", coursename = "java_funds")
         courses.set(course.coursename, course)
     }
 
     private fun initializenotes() {
-        val noteInfo = NoteInfo(
+        var noteInfo = NoteInfo(
             CourseInfo("My name", "Noel"),
             "This is a sample note",
             "Hey There i told you that this s a sample note"
         )
+        notes.add(noteInfo)
+
+        noteInfo = NoteInfo(noteTitle = "Joel", noteText = "This is the name of my junior brother")
         notes.add(noteInfo)
     }
 }
