@@ -25,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCourses.adapter = adapterCourses
 
-        notePosition = intent.getIntExtra(extranoteposition, positionnotset)
+        notePosition =
+            savedInstanceState?.getInt(extranoteposition, positionnotset) ?: intent.getIntExtra(
+                extranoteposition,
+                positionnotset
+            )
         if (notePosition != positionnotset)
             displayNotes()
         else {
@@ -53,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_next -> {
-            moveNext()
+                moveNext()
 
 
                 true
@@ -94,6 +98,12 @@ class MainActivity : AppCompatActivity() {
 
         }
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(extranoteposition, notePosition)
+
     }
 
     private fun moveNext() {
