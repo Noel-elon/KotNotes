@@ -26,13 +26,11 @@ class NoteListActivity : AppCompatActivity() {
         recycler_list.adapter = NoteAdapter(this, Datamanager.notes)
 
 
-
-
-
     }
 
     override fun onResume() {
         super.onResume()
+        recycler_list.adapter?.notifyDataSetChanged()
     }
 
 }
