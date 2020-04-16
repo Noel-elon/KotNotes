@@ -33,11 +33,15 @@ class MainActivity : AppCompatActivity() {
         if (notePosition != positionnotset)
             displayNotes()
         else {
-            Datamanager.notes.add(NoteInfo())
-            notePosition = Datamanager.notes.lastIndex
+            createNote()
         }
 
 
+    }
+
+    private fun createNote() {
+        Datamanager.notes.add(NoteInfo())
+        notePosition = Datamanager.notes.lastIndex
     }
 
     private fun displayNotes() {

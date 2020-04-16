@@ -10,6 +10,14 @@ object Datamanager {
         initializenotes()
     }
 
+    fun addNote(course: CourseInfo, noteTitle: String, noteText: String): Int {
+        val note = NoteInfo(course, noteTitle, noteText)
+        notes.add(note)
+        val index = Datamanager.notes.indexOf(note)
+
+        return index
+    }
+
     private fun initializecourses() {
         var course = CourseInfo("Android_Intents", "Android programming with intents")
         courses.set(course.coursename, course)
