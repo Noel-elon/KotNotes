@@ -32,7 +32,9 @@ object Datamanager {
         courses.set(course.coursename, course)
     }
 
-    private fun initializenotes() {
+
+
+     fun initializenotes() {
         var noteInfo = NoteInfo(
             CourseInfo("My name", "Noel"),
             "This is a sample note",

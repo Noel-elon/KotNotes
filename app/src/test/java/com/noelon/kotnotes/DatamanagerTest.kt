@@ -3,8 +3,14 @@ package com.noelon.kotnotes
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 
 class DatamanagerTest {
+    @Before
+    fun setUp() {
+        Datamanager.notes.clear()
+        Datamanager.initializenotes()
+    }
 
     @Test
     fun addNote() {
